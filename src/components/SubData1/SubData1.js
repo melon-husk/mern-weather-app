@@ -11,6 +11,18 @@ const useStyles = makeStyles({
     marginTop: "10px",
     padding: "8px",
   },
+  heading: {
+    color: "#E4E4E4",
+    fontWeight: "500",
+    fontSize: "1rem",
+    margin: "0",
+    padding: "0px 0px 5px 0px",
+  },
+  data: {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    margin: "0",
+  },
 });
 export default function SubData1() {
   const classes = useStyles();
@@ -23,76 +35,16 @@ export default function SubData1() {
       className={classes.container}
     >
       <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            Wind
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            33 m/s
-          </p>
-        </div>
+        <p className={classes.heading}>Wind</p>
+        <p className={classes.data}>33 m/s</p>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            Humidity
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            55%
-          </p>
-        </div>
+        <p className={classes.heading}>Humidity</p>
+        <p className={classes.data}>55%</p>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            Visibility
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            1km
-          </p>
-        </div>
+        <p className={classes.heading}>Visibility</p>
+        <p className={classes.data}>1km</p>
       </Grid>
     </Grid>
   );

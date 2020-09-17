@@ -11,6 +11,24 @@ const useStyles = makeStyles({
     marginTop: "10px",
     padding: "8px",
   },
+  heading: {
+    color: "#E4E4E4",
+    fontWeight: "500",
+    fontSize: "1rem",
+    margin: "0",
+    padding: "0px 0px 5px 0px",
+  },
+  data: {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    margin: "0",
+  },
+  weatherDescription: {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+    margin: "0",
+    padding: "5px 0px",
+  },
 });
 export default function SubData2() {
   const classes = useStyles();
@@ -24,87 +42,24 @@ export default function SubData2() {
     >
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            Dew Point
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            25°
-          </p>
+          <p className={classes.heading}>Dew Point</p>
+          <p className={classes.data}>25°</p>
         </div>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            UV Index
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            13
-          </p>
+          <p className={classes.heading}>UV Index</p>
+          <p className={classes.data}>13</p>
         </div>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <div>
-          <p
-            style={{
-              color: "#E4E4E4",
-              fontWeight: "500",
-              fontSize: "1rem",
-              margin: "0",
-              padding: "0px 0px 5px 0px",
-            }}
-          >
-            Pressure
-          </p>
-          <p
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.1rem",
-              margin: "0",
-            }}
-          >
-            12hPa
-          </p>
+          <p className={classes.heading}>Pressure</p>
+          <p className={classes.data}>12hPa</p>
         </div>
       </Grid>
       <Grid item xs={12} sm={12} lg={12} xl={12}>
-        <p
-          style={{
-            fontWeight: "bold",
-            fontSize: "1.1rem",
-            margin: "0",
-            padding: "5px 0px",
-          }}
-        >
-          Scattered Clouds
-        </p>
+        <p className={classes.weatherDescription}>Scattered Clouds</p>
       </Grid>
     </Grid>
   );
