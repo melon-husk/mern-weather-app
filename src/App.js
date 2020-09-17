@@ -7,6 +7,7 @@ import { StylesProvider } from "@material-ui/core/styles";
 import WeatherBox from "./components/WeatherBox/WeatherBox";
 import SubData1 from "./components/SubData1/SubData1";
 import SubData2 from "./components/SubData2/SubData2";
+import WeekDayBar from "./components/WeekDayBar/WeekDayBar";
 const useStyles = makeStyles({
   items: {
     margin: "0px 0px 0px 0px",
@@ -55,6 +56,12 @@ function App() {
           <WeatherBox />
           <SubData1 />
           <SubData2 />
+          <WeekDayBar />
+          <WeekDayBar />
+          <WeekDayBar />
+          <WeekDayBar />
+          <WeekDayBar />
+          <WeekDayBar />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           <WeatherBox />
