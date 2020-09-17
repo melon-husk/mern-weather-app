@@ -56,12 +56,16 @@ export default function WeatherBox() {
       alignItems="flex-start"
       className={classes.constainer}
     >
-      <Grid item xs={6} sm={6} lg={6} xl={6} className={classes.items}>
-        <img src={require("./svg/002-storm.svg")} className={classes.image} />
+      <Grid item xs={6} sm={6} lg={6} xl={6}>
+        <img
+          src={require("./svg/002-storm.svg")}
+          className={classes.image}
+          alt={"002-storm.svg"}
+        />
         <p className={classes.weatherDescription}>Heavy Rain</p>
         <p className={classes.timeOfDay}>Morning</p>
       </Grid>
-      <Grid item xs={6} sm={6} lg={6} xl={6} className={classes.items}>
+      <Grid item xs={6} sm={6} lg={6} xl={6}>
         <p className={classes.temperature}>133°F</p>
         <p className={classes.feelsLike}>Feels like 131°F</p>
         <p className={classes.currentDay}>Monday</p>

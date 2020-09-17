@@ -5,6 +5,7 @@ import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { StylesProvider } from "@material-ui/core/styles";
 import WeatherBox from "./components/WeatherBox/WeatherBox";
+import SubData1 from "./components/SubData1/SubData1";
 
 const useStyles = makeStyles({
   items: {
@@ -22,7 +23,7 @@ function App() {
   let sm = 12;
   let smItem = 6;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
 
@@ -52,6 +53,7 @@ function App() {
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           <WeatherBox />
+          <SubData1 />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           <WeatherBox />
