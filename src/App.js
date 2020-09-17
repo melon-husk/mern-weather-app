@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import { StylesProvider } from "@material-ui/core/styles";
 import WeatherBox from "./components/WeatherBox/WeatherBox";
 import SubData1 from "./components/SubData1/SubData1";
-
+import SubData2 from "./components/SubData2/SubData2";
 const useStyles = makeStyles({
   items: {
     margin: "0px 0px 0px 0px",
@@ -54,6 +54,7 @@ function App() {
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           <WeatherBox />
           <SubData1 />
+          <SubData2 />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           <WeatherBox />
