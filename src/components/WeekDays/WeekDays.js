@@ -7,7 +7,6 @@ const dayArray = [
   "Thursday",
   "Friday",
   "Saturday",
-  "Sunday",
 ];
 export default function WeekDays() {
   const components = dayArray.map((day, index) => (

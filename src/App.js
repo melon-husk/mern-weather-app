@@ -8,6 +8,7 @@ import WeatherBox from "./components/WeatherBox/WeatherBox";
 import SubData1 from "./components/SubData1/SubData1";
 import SubData2 from "./components/SubData2/SubData2";
 import WeekDays from "./components/WeekDays/WeekDays";
+import DayHours from "./components/DayHours/DayHours";
 const useStyles = makeStyles({
   items: {
     margin: "0px 0px 0px 0px",
@@ -59,7 +60,17 @@ function App() {
           <WeekDays />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
-          <WeatherBox />
+          <div
+            style={{
+              height: "40px",
+              fontFamily: "Roboto",
+              fontSize: "1.8rem",
+              color: "white",
+            }}
+          >
+            Made With React
+          </div>
+          <DayHours />
         </Grid>
       </Grid>
     </div>
