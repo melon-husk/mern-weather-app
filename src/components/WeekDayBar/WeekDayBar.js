@@ -7,7 +7,7 @@ const useStyle = makeStyles({
     borderRadius: "12px",
     background: "black",
     color: "white",
-    textAlign: "center",
+    textAlign: "left",
     fontFamily: "Roboto",
     marginTop: "10px",
     padding: "8px",
@@ -33,7 +33,7 @@ const useStyle = makeStyles({
   },
 });
 
-export default function WeekDayBar() {
+export default function WeekDayBar({ day }) {
   const classes = useStyle();
   return (
     <Grid
@@ -43,10 +43,10 @@ export default function WeekDayBar() {
       alignItems="center"
       className={classes.container}
     >
-      <Grid item xs={3} sm={3} lg={3} xl={3}>
-        <p className={classes.weekDay}>Tuesday</p>
+      <Grid item xs={3} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
+        <p className={classes.weekDay}>{day}</p>
       </Grid>
-      <Grid item xs={3} sm={3} lg={3} xl={3}>
+      <Grid item xs={3} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <img
           src={require("./svg/003-rainy.svg")}
           alt="storm"
