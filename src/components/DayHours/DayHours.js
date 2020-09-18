@@ -11,7 +11,6 @@ const hourArray = [
   "08:40 AM",
   "09:40 AM",
   "10:40 AM",
-  "11:40 AM",
 ];
 export default function WeekDays() {
   const components = hourArray.map((time, index) => (

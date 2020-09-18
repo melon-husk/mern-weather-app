@@ -2,7 +2,7 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 const useStyles = makeStyles({
-  constainer: {
+  container: {
     borderRadius: "12px",
     background: "black",
     color: "white",
@@ -54,7 +54,7 @@ export default function WeatherBox() {
       direction="row"
       justify="space-between"
       alignItems="flex-start"
-      className={classes.constainer}
+      className={classes.container}
     >
       <Grid item xs={6} sm={6} lg={6} xl={6}>
         <img

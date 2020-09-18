@@ -9,26 +9,27 @@ const useStyle = makeStyles({
     color: "white",
     textAlign: "left",
     fontFamily: "Roboto",
-    marginTop: "10px",
+    marginTop: "14px",
     padding: "8px",
+    height: "68px",
   },
   weekDay: {
     fontWeight: "400",
-    fontSize: "1.1rem",
+    fontSize: "1.3rem",
     margin: "0",
   },
   image: {
-    width: "30px",
-    height: "30px",
+    width: "35px",
+    height: "35px",
   },
   arrow: {
-    width: "20px",
-    height: "20px",
+    width: "25px",
+    height: "25px",
     float: "left",
   },
   temperature: {
     fontWeight: "bold",
-    fontSize: "1rem",
+    fontSize: "1.1rem",
     margin: "0",
   },
 });
@@ -43,7 +44,7 @@ export default function WeekDayBar({ day }) {
       alignItems="center"
       className={classes.container}
     >
-      <Grid item xs={3} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
+      <Grid item xs={4} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <p className={classes.weekDay}>{day}</p>
       </Grid>
       <Grid item xs={3} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>

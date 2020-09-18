@@ -5,7 +5,7 @@ function SearchBarJs() {
   return (
     <div>
       <SearchBar
-        placeholder=""
+        placeholder="London"
         style={{ background: "black", borderRadius: "15px" }}
       />
     </div>

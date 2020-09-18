@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     color: "white",
     textAlign: "center",
     fontFamily: "Roboto",
-    marginTop: "10px",
+    marginTop: "14px",
     padding: "8px",
   },
   heading: {

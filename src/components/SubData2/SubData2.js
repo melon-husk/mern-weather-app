@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     color: "white",
     textAlign: "center",
     fontFamily: "Roboto",
-    marginTop: "10px",
+    marginTop: "14px",
     padding: "8px",
   },
   heading: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     fontSize: "1.1rem",
     margin: "0",
   },
-  weatherDescription: {
+  timeNow: {
     fontWeight: "bold",
     fontSize: "1.1rem",
     margin: "0",
@@ -59,7 +59,7 @@ export default function SubData2() {
         </div>
       </Grid>
       <Grid item xs={12} sm={12} lg={12} xl={12}>
-        <p className={classes.weatherDescription}>Scattered Clouds</p>
+        <p className={classes.timeNow}>12:00 AM</p>
       </Grid>
     </Grid>
   );
