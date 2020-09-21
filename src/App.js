@@ -9,7 +9,7 @@ import SubData1 from "./components/SubData1/SubData1";
 import SubData2 from "./components/SubData2/SubData2";
 import WeekDays from "./components/WeekDays/WeekDays";
 import DayHours from "./components/DayHours/DayHours";
-
+import axios from "axios";
 const useStyles = makeStyles({
   items: {
     margin: "0px 0px 0px 0px",
@@ -31,6 +31,9 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles();
   const [width, setWidth] = useState(window.innerWidth);
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
   let sm = 12;
   let smItem = 6;
 
@@ -41,6 +44,21 @@ function App() {
     // Return a function from the effect that removes the event listener
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
+  useEffect(() => {
+    axios
+      .post("http://192.168.0.130:5000/api/get_data", {
+        lat: Number(20.9),
+        lng: Number(77.7),
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+        setLoading(false);
+      });
+  }, []);
+  if (isLoading) {
+    return <div className="App">Loading</div>;
+  }
   if (width < 890 && width > 855) {
     sm = 12;
     smItem = 6;
@@ -58,18 +76,18 @@ function App() {
       >
         <Grid item xs={12} sm={sm} lg={10} xl={10} className={classes.items}>
           <StylesProvider injectFirst>
-            <SearchBar />
+            <SearchBar setData={setData} />
           </StylesProvider>
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
-          <WeatherBox />
-          <SubData1 />
-          <SubData2 />
-          <WeekDays />
+          <WeatherBox data={data} />
+          <SubData1 data={data} />
+          <SubData2 data={data} />
+          <WeekDays data={data} />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
           {/* <div className={classes.branding}>Made With React</div> */}
-          <DayHours />
+          <DayHours data={data} />
         </Grid>
       </Grid>
     </div>

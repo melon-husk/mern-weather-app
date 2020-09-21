@@ -7,6 +7,8 @@ import SearchBar from "material-ui-search-bar";
 // Import React Scrit Libraray to load Google object
 import Script from "react-load-script";
 
+import axios from "axios";
+
 class Search extends Component {
   // Define Constructor
   constructor() {
@@ -52,15 +54,20 @@ class Search extends Component {
 
     // Check if address is valid
     if (address) {
-      // Set State
       this.setState({
         city: address[0].long_name,
         query: addressObject.formatted_address,
         coordinates: {
-          lat: addressObject.geometry.location.lat(),
-          lng: addressObject.geometry.location.lng(),
+          lat: addressObject.geometry.location.lat().toFixed(2),
+          lng: addressObject.geometry.location.lng().toFixed(2),
         },
       });
+      axios
+        .post("http://192.168.0.130:5000/api/get_data", {
+          lat: Number(this.state.coordinates.lat),
+          lng: Number(this.state.coordinates.lng),
+        })
+        .then((res) => this.props.setData(res.data));
     }
   };
 
@@ -68,7 +75,7 @@ class Search extends Component {
     return (
       <div>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAcB4sZqoQyudE_JxDRsobDnuFBVTTezI&libraries=places"
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9i89efgSRwtzR71kRNZF6_YKGb3kITRg&libraries=places"
           onLoad={this.handleScriptLoad}
         />
         <SearchBar

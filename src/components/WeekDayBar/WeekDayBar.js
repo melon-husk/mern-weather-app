@@ -11,7 +11,8 @@ const useStyle = makeStyles({
     fontFamily: "Roboto",
     marginTop: "14px",
     padding: "8px",
-    height: "68px",
+
+    height: "70px",
   },
   weekDay: {
     fontWeight: "400",

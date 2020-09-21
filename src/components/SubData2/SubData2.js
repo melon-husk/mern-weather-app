@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     fontFamily: "Roboto",
     marginTop: "14px",
     padding: "8px",
+    height: "70px",
   },
   heading: {
     color: "#E4E4E4",
@@ -57,9 +58,6 @@ export default function SubData2() {
           <p className={classes.heading}>Pressure</p>
           <p className={classes.data}>12hPa</p>
         </div>
-      </Grid>
-      <Grid item xs={12} sm={12} lg={12} xl={12}>
-        <p className={classes.timeNow}>12:00 AM</p>
       </Grid>
     </Grid>
   );

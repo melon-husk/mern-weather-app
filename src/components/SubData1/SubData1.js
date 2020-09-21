@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     fontFamily: "Roboto",
     marginTop: "14px",
     padding: "8px",
+    height: "70px",
   },
   heading: {
     color: "#E4E4E4",

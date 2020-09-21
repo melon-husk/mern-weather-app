@@ -1,6 +1,8 @@
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
+import React, { useState, useEffect } from "react";
+const { DateTime } = require("luxon");
+
 const useStyles = makeStyles({
   container: {
     borderRadius: "12px",
@@ -8,6 +10,7 @@ const useStyles = makeStyles({
     color: "white",
     textAlign: "left",
     fontFamily: "Roboto",
+    height: "154px",
   },
   image: {
     height: "70px",
@@ -20,7 +23,7 @@ const useStyles = makeStyles({
     fontWeight: "normal",
     fontSize: "1.7rem",
   },
-  timeOfDay: {
+  currentTime: {
     fontWeight: "normal",
     fontSize: "1.4rem",
     margin: "0px 0px 0px 18px",
@@ -30,24 +33,63 @@ const useStyles = makeStyles({
     fontSize: "3.85rem",
     margin: "0",
     textAlign: "right",
-    padding: "8px 18px 0px 0px",
+    MozUserSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
+    cursor: "pointer",
   },
   feelsLike: {
     margin: "0",
     textAlign: "right",
-    padding: "5px 45px 0px 0px",
     fontWeight: "500",
   },
   currentDay: {
     margin: "0",
     textAlign: "right",
-    padding: "10px 55px 10px 0px",
+    padding: "10px 0px 10px 0px",
     fontWeight: "500",
     fontSize: "1.6rem",
   },
 });
-export default function WeatherBox() {
+export default function WeatherBox(props) {
   const classes = useStyles();
+  const [temperature, setTemperature] = useState("32°C");
+  const [temperatureC, setTemperatureC] = useState();
+  const [temperatureF, setTemperatureF] = useState();
+  const [weatherDescription, setWeatherDescription] = useState();
+  const [currentTime, setCurrentTime] = useState();
+  const [feelsLike, setFeelsLike] = useState("28°C");
+  const [feelsLikeC, setFeelsLikeC] = useState();
+  const [feelsLikeF, setFeelsLikeF] = useState();
+  const [currentDay, setCurrentDay] = useState();
+
+  useEffect(() => {
+    setTemperatureC(`${Math.round(props.data.current.temp)}°C`);
+    setTemperatureF(`${Math.round(props.data.current.temp * 1.8 + 32)}°F`);
+    setWeatherDescription(props.data.current.weather[0].description);
+    setCurrentTime(
+      DateTime.fromSeconds(props.data.current.dt).toLocaleString(
+        DateTime.TIME_SIMPLE
+      )
+    );
+    setFeelsLikeC(`${Math.round(props.data.current.feels_like)}°C`);
+    setFeelsLikeF(`${Math.round(props.data.current.feels_like * 1.8 + 32)}°F`);
+    setCurrentDay(
+      DateTime.fromSeconds(props.data.current.dt).toLocaleString({
+        weekday: "long",
+      })
+    );
+  }, [props.data]);
+  const switchTemp = () => {
+    if (temperature === temperatureF) {
+      setTemperature(temperatureC);
+      setFeelsLike(feelsLikeC);
+    } else {
+      setTemperature(temperatureF);
+      setFeelsLike(feelsLikeF);
+    }
+  };
+
   return (
     <Grid
       container
@@ -58,17 +100,28 @@ export default function WeatherBox() {
     >
       <Grid item xs={6} sm={6} lg={6} xl={6}>
         <img
-          src={require("./svg/002-storm.svg")}
+          src={require(`./svg/${props.data.current.weather[0].icon}.svg`)}
           className={classes.image}
-          alt={"002-storm.svg"}
+          alt={"weather"}
         />
-        <p className={classes.weatherDescription}>Heavy Rain</p>
-        <p className={classes.timeOfDay}>Morning</p>
+        <p className={classes.weatherDescription}>{weatherDescription}</p>
+        <p className={classes.currentTime}>{currentTime}</p>
       </Grid>
       <Grid item xs={6} sm={6} lg={6} xl={6}>
-        <p className={classes.temperature}>133°F</p>
-        <p className={classes.feelsLike}>Feels like 131°F</p>
-        <p className={classes.currentDay}>Monday</p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginLeft: "40px",
+          }}
+        >
+          <p className={classes.temperature} onClick={switchTemp}>
+            {temperature}
+          </p>
+          <p className={classes.feelsLike}>{`Feels like ${feelsLike}`}</p>
+          <p className={classes.currentDay}>{currentDay}</p>
+        </div>
       </Grid>
     </Grid>
   );
