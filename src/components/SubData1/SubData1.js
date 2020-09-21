@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
@@ -25,8 +25,18 @@ const useStyles = makeStyles({
     margin: "0",
   },
 });
-export default function SubData1() {
+export default function SubData1(props) {
+  const [windSpeed, setWindSpeed] = useState();
+  const [humidity, setHumidity] = useState();
+  const [visibility, setVisibility] = useState();
   const classes = useStyles();
+
+  useEffect(() => {
+    setWindSpeed(`${props.data.current.wind_speed} m/s`);
+    setHumidity(`${props.data.current.humidity}%`);
+    setVisibility(`${Math.round(props.data.current.visibility / 1000)} km`);
+  }, [props.data]);
+
   return (
     <Grid
       container
@@ -37,15 +47,15 @@ export default function SubData1() {
     >
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <p className={classes.heading}>Wind</p>
-        <p className={classes.data}>33 m/s</p>
+        <p className={classes.data}>{windSpeed}</p>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <p className={classes.heading}>Humidity</p>
-        <p className={classes.data}>55%</p>
+        <p className={classes.data}>{humidity}</p>
       </Grid>
       <Grid item xs={4} sm={4} lg={4} xl={4}>
         <p className={classes.heading}>Visibility</p>
-        <p className={classes.data}>1km</p>
+        <p className={classes.data}>{visibility}</p>
       </Grid>
     </Grid>
   );
