@@ -8,7 +8,7 @@ import SearchBar from "material-ui-search-bar";
 import Script from "react-load-script";
 
 import axios from "axios";
-
+import "./searchBar.css";
 class Search extends Component {
   // Define Constructor
   constructor() {
@@ -83,7 +83,7 @@ class Search extends Component {
           placeholder="Search City"
           value={this.state.query}
           style={{
-            margin: "0 auto",
+            margin: "10px 10px 0px 10px",
             background: "black",
             borderRadius: "12px",
             color: "white",

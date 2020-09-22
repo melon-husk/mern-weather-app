@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     color: "white",
     textAlign: "center",
     fontFamily: "Roboto",
-    marginTop: "14px",
+    marginTop: "10px",
     padding: "8px",
     height: "70px",
   },
@@ -38,25 +38,27 @@ export default function SubData1(props) {
   }, [props.data]);
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="space-between"
-      alignItems="center"
-      className={classes.container}
-    >
-      <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <p className={classes.heading}>Wind</p>
-        <p className={classes.data}>{windSpeed}</p>
+    <div style={{ margin: "10px 10px 0px 10px" }}>
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        className={classes.container}
+      >
+        <Grid item xs={4} sm={4} lg={4} xl={4}>
+          <p className={classes.heading}>Wind</p>
+          <p className={classes.data}>{windSpeed}</p>
+        </Grid>
+        <Grid item xs={4} sm={4} lg={4} xl={4}>
+          <p className={classes.heading}>Humidity</p>
+          <p className={classes.data}>{humidity}</p>
+        </Grid>
+        <Grid item xs={4} sm={4} lg={4} xl={4}>
+          <p className={classes.heading}>Visibility</p>
+          <p className={classes.data}>{visibility}</p>
+        </Grid>
       </Grid>
-      <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <p className={classes.heading}>Humidity</p>
-        <p className={classes.data}>{humidity}</p>
-      </Grid>
-      <Grid item xs={4} sm={4} lg={4} xl={4}>
-        <p className={classes.heading}>Visibility</p>
-        <p className={classes.data}>{visibility}</p>
-      </Grid>
-    </Grid>
+    </div>
   );
 }

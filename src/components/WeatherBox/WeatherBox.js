@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     color: "white",
     textAlign: "left",
     fontFamily: "Roboto",
-    height: "154px",
+    height: "150px",
+    margin: "10px 10px 0px 0px",
   },
   image: {
     height: "70px",
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
   weatherDescription: {
     margin: "0px 0px 0px 18px",
     fontWeight: "normal",
-    fontSize: "1.7rem",
+    fontSize: "1.4rem",
   },
   currentTime: {
     fontWeight: "normal",
@@ -53,12 +54,12 @@ const useStyles = makeStyles({
 });
 export default function WeatherBox(props) {
   const classes = useStyles();
-  const [temperature, setTemperature] = useState("32°C");
+
   const [temperatureC, setTemperatureC] = useState();
   const [temperatureF, setTemperatureF] = useState();
   const [weatherDescription, setWeatherDescription] = useState();
   const [currentTime, setCurrentTime] = useState();
-  const [feelsLike, setFeelsLike] = useState("28°C");
+
   const [feelsLikeC, setFeelsLikeC] = useState();
   const [feelsLikeF, setFeelsLikeF] = useState();
   const [currentDay, setCurrentDay] = useState();
@@ -81,48 +82,50 @@ export default function WeatherBox(props) {
     );
   }, [props.data]);
   const switchTemp = () => {
-    if (temperature === temperatureF) {
-      setTemperature(temperatureC);
-      setFeelsLike(feelsLikeC);
+    if (!props.showTempInC) {
+      props.setShowTempInC(true);
     } else {
-      setTemperature(temperatureF);
-      setFeelsLike(feelsLikeF);
+      props.setShowTempInC(false);
     }
   };
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="space-between"
-      alignItems="flex-start"
-      className={classes.container}
-    >
-      <Grid item xs={6} sm={6} lg={6} xl={6}>
-        <img
-          src={require(`./svg/${props.data.current.weather[0].icon}.svg`)}
-          className={classes.image}
-          alt={"weather"}
-        />
-        <p className={classes.weatherDescription}>{weatherDescription}</p>
-        <p className={classes.currentTime}>{currentTime}</p>
+    <div style={{ margin: "10px 10px 0px 10px" }}>
+      <Grid
+        container
+        direction="row"
+        justify="space-between"
+        alignItems="flex-start"
+        className={classes.container}
+      >
+        <Grid item xs={6} sm={6} lg={6} xl={6}>
+          <img
+            src={require(`../svg/${props.data.current.weather[0].icon}.svg`)}
+            className={classes.image}
+            alt={"weather"}
+          />
+          <p className={classes.weatherDescription}>{weatherDescription}</p>
+          <p className={classes.currentTime}>{currentTime}</p>
+        </Grid>
+        <Grid item xs={6} sm={6} lg={6} xl={6}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginLeft: "40px",
+            }}
+          >
+            <p className={classes.temperature} onClick={switchTemp}>
+              {props.showTempInC ? temperatureC : temperatureF}
+            </p>
+            <p className={classes.feelsLike}>{`Feels like ${
+              props.showTempInC ? feelsLikeC : feelsLikeF
+            }`}</p>
+            <p className={classes.currentDay}>{currentDay}</p>
+          </div>
+        </Grid>
       </Grid>
-      <Grid item xs={6} sm={6} lg={6} xl={6}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginLeft: "40px",
-          }}
-        >
-          <p className={classes.temperature} onClick={switchTemp}>
-            {temperature}
-          </p>
-          <p className={classes.feelsLike}>{`Feels like ${feelsLike}`}</p>
-          <p className={classes.currentDay}>{currentDay}</p>
-        </div>
-      </Grid>
-    </Grid>
+    </div>
   );
 }

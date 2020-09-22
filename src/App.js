@@ -19,13 +19,6 @@ const useStyles = makeStyles({
   rounded: {
     borderRadius: "12px",
   },
-  branding: {
-    height: "32px",
-    fontFamily: "Lobster",
-    fontSize: "1.5rem",
-    color: "white",
-    marginBottom: "1px",
-  },
 });
 
 function App() {
@@ -33,6 +26,7 @@ function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [showTempInC, setShowTempInC] = useState(true);
 
   let sm = 12;
   let smItem = 6;
@@ -40,15 +34,14 @@ function App() {
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
-
     // Return a function from the effect that removes the event listener
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
   useEffect(() => {
     axios
       .post("http://192.168.0.130:5000/api/get_data", {
-        lat: Number(20.9),
-        lng: Number(77.7),
+        lat: Number(20.92),
+        lng: Number(77.75),
       })
       .then((res) => {
         console.log(res.data);
@@ -56,38 +49,36 @@ function App() {
         setLoading(false);
       });
   }, []);
+
   if (isLoading) {
     return <div className="App">Loading</div>;
   }
-  if (width < 890 && width > 855) {
+  if (width < 900 && width > 900) {
     sm = 12;
     smItem = 6;
-  } else if (width < 855) {
+  } else if (width < 900) {
     smItem = 12;
   }
   return (
-    <div style={{ padding: "10px" }}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="stretch"
-        spacing={1}
-      >
+    <div>
+      <Grid container direction="row" justify="center" alignItems="stretch">
         <Grid item xs={12} sm={sm} lg={10} xl={10} className={classes.items}>
           <StylesProvider injectFirst>
             <SearchBar setData={setData} />
           </StylesProvider>
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
-          <WeatherBox data={data} />
+          <WeatherBox
+            data={data}
+            setShowTempInC={setShowTempInC}
+            showTempInC={showTempInC}
+          />
           <SubData1 data={data} />
-          <SubData2 data={data} />
-          <WeekDays data={data} />
+          <SubData2 data={data} showTempInC={showTempInC} />
+          <WeekDays data={data} showTempInC={showTempInC} />
         </Grid>
         <Grid item xs={12} sm={smItem} lg={5} xl={5} className={classes.items}>
-          {/* <div className={classes.branding}>Made With React</div> */}
-          <DayHours data={data} />
+          <DayHours data={data} showTempInC={showTempInC} />
         </Grid>
       </Grid>
     </div>

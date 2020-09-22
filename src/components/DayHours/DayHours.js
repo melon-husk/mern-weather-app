@@ -1,20 +1,16 @@
 import React from "react";
 import DayHourBar from "../DayHourBar/DayHourBar";
-const hourArray = [
-  "12:40 AM",
-  "01:40 AM",
-  "02:40 AM",
-  "03:40 AM",
-  "04:40 AM",
-  "05:40 AM",
-  "07:40 AM",
-  "08:40 AM",
-  "09:40 AM",
-  "10:40 AM",
-];
-export default function WeekDays() {
+const hourArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export default function WeekDays(props) {
   const components = hourArray.map((time, index) => (
-    <DayHourBar time={time} key={index} />
+    <div style={{ margin: "10px 10px 0px 10px" }}>
+      <DayHourBar
+        index={time}
+        key={index}
+        showTempInC={props.showTempInC}
+        data={props.data}
+      />
+    </div>
   ));
   return <div>{components}</div>;
 }
