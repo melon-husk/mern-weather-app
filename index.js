@@ -28,14 +28,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", weatherData);
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync("./certs/server.key"),
-      cert: fs.readFileSync("./certs/server.cert"),
-    },
-    app
-  )
-  .listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
+// https
+//   .createServer(
+//     {
+//       key: fs.readFileSync("./certs/server.key"),
+//       cert: fs.readFileSync("./certs/server.cert"),
+//     },
+//     app
+//   )
+//   .listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
 
-// app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on Port: ${PORT}`));
