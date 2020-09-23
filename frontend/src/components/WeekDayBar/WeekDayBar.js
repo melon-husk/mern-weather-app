@@ -10,7 +10,6 @@ const useStyle = makeStyles({
     color: "white",
     textAlign: "left",
     fontFamily: "Roboto",
-    // marginTop: "14px",
     padding: "8px",
     height: "70px",
   },

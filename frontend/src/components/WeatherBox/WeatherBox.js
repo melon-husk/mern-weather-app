@@ -68,11 +68,6 @@ export default function WeatherBox(props) {
     setTemperatureC(`${Math.round(props.data.current.temp)}°C`);
     setTemperatureF(`${Math.round(props.data.current.temp * 1.8 + 32)}°F`);
     setWeatherDescription(props.data.current.weather[0].description);
-    // setCurrentTime(
-    //   DateTime.fromSeconds(props.data.current.dt).toLocaleString(
-    //     DateTime.TIME_SIMPLE
-    //   )
-    // );
     setCurrentTime(
       DateTime.local()
         .setZone(props.data.timezone)
