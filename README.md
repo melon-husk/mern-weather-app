@@ -40,3 +40,9 @@ npm start
 ```
 
 Now you can go to `localhost:3000` to access your frontend
+
+### TODO
+
+- Add multiple theme support
+- Add Page support
+- Refactor
