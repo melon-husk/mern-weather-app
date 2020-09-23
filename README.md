@@ -15,15 +15,8 @@ npm install && npm i nodemon
 Install frontend dependencies
 
 ```bash
-cd frontend
-npm install
+cd frontend && npm install
 ```
-
-## Setup
-
-- Create .env file at the root directory and add your `PORT` and `ATLAS_URI` variables
-- Go to `frontend/App.js` and replace the address in axios post to point to your server
-- Go to `frontend/components/SearchBar/SearchBar.js` and replace the address in axios post to point to your server
 
 ## Usage
 
@@ -41,8 +34,15 @@ npm start
 
 Now you can go to `localhost:3000` to access your frontend
 
+## Setup
+
+- Create .env file at the root directory of the project and add your `PORT`, `ATLAS_URI` and `OPEN_WEATHER_API_KEY` variables
+- Go to `frontend/src/App.js` and replace the address in axios post to point to your server
+- Go to `frontend/src/components/SearchBar/SearchBar.js` and replace the address in axios post to point to your server
+
 ### TODO
 
 - Add multiple theme support
 - Add Page support
-- Refactor
+- Document the code
+- Auto load weather data from IP on startup
