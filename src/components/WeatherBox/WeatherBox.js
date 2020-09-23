@@ -68,10 +68,15 @@ export default function WeatherBox(props) {
     setTemperatureC(`${Math.round(props.data.current.temp)}°C`);
     setTemperatureF(`${Math.round(props.data.current.temp * 1.8 + 32)}°F`);
     setWeatherDescription(props.data.current.weather[0].description);
+    // setCurrentTime(
+    //   DateTime.fromSeconds(props.data.current.dt).toLocaleString(
+    //     DateTime.TIME_SIMPLE
+    //   )
+    // );
     setCurrentTime(
-      DateTime.fromSeconds(props.data.current.dt).toLocaleString(
-        DateTime.TIME_SIMPLE
-      )
+      DateTime.local()
+        .setZone(props.data.timezone)
+        .toLocaleString(DateTime.TIME_SIMPLE)
     );
     setFeelsLikeC(`${Math.round(props.data.current.feels_like)}°C`);
     setFeelsLikeF(`${Math.round(props.data.current.feels_like * 1.8 + 32)}°F`);

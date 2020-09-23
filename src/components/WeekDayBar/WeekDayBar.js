@@ -20,8 +20,8 @@ const useStyle = makeStyles({
     margin: "0",
   },
   image: {
-    width: "35px",
-    height: "35px",
+    width: "45px",
+    height: "45px",
   },
   arrow: {
     width: "25px",
@@ -68,7 +68,7 @@ export default function WeekDayBar(props) {
       <Grid item xs={4} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <p className={classes.weekDay}>{weekDay}</p>
       </Grid>
-      <Grid item xs={3} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
+      <Grid item xs={2} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <img
           src={require(`../svg/${
             props.data.daily[props.index].weather[0].icon
@@ -77,7 +77,7 @@ export default function WeekDayBar(props) {
           className={classes.image}
         />
       </Grid>
-      <Grid item xs={2} sm={2} lg={2} xl={2} style={{ paddingLeft: "10px" }}>
+      <Grid item xs={3} sm={3} lg={2} xl={2} style={{ paddingLeft: "10px" }}>
         <img
           src={require("../svg/keyboard_arrow_up-24px.svg")}
           alt={"arrow up"}
@@ -87,7 +87,7 @@ export default function WeekDayBar(props) {
           {props.showTempInC ? highTempC : highTempF}
         </p>
       </Grid>
-      <Grid item xs={2} sm={2} lg={2} xl={2} style={{ paddingLeft: "10px" }}>
+      <Grid item xs={3} sm={3} lg={2} xl={2} style={{ paddingLeft: "10px" }}>
         <img
           src={require("../svg/keyboard_arrow_down-24px.svg")}
           alt={"arrow up"}

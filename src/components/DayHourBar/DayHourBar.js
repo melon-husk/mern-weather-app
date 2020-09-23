@@ -19,8 +19,8 @@ const useStyle = makeStyles({
     margin: "0",
   },
   image: {
-    width: "35px",
-    height: "35px",
+    width: "45px",
+    height: "45px",
   },
   arrow: {
     width: "25px",
@@ -59,7 +59,7 @@ export default function DayHourBar(props) {
       <Grid item xs={4} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <p className={classes.time}>{time}</p>
       </Grid>
-      <Grid item xs={4} sm={3} lg={3} xl={3} style={{ paddingLeft: "20px" }}>
+      <Grid item xs={2} sm={3} lg={3} xl={3} style={{ paddingLeft: "10px" }}>
         <img
           src={require(`../svg/${
             props.data.hourly[props.index].weather[0].icon
@@ -70,8 +70,8 @@ export default function DayHourBar(props) {
       </Grid>
       <Grid
         item
-        xs={4}
-        sm={5}
+        xs={6}
+        sm={6}
         lg={5}
         xl={5}
         style={{ paddingRight: "10px", textAlign: "center" }}
